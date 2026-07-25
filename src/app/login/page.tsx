@@ -21,7 +21,7 @@ export default function LoginPage() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.push("/dashboard");
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError("Failed to sign in. Please check your credentials.");
       console.error(err);
     } finally {
@@ -68,7 +68,7 @@ export default function LoginPage() {
         </button>
 
         <div className="auth-link">
-          Don't have an account? <Link href="/register">Register here</Link>
+          Don&apos;t have an account? <Link href="/register">Register here</Link>
         </div>
       </form>
     </div>

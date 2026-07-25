@@ -33,7 +33,7 @@ export default function RegisterPage() {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       router.push("/dashboard");
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError("Failed to create an account. Email might be in use.");
       console.error(err);
     } finally {
