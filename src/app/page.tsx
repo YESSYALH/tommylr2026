@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
           Tommy L. Ruff
           <span>CLU® · ChFC® · RFC® · MCEP™</span>
         </Link>
-        <nav className="nav-links">
+        <nav className="nav-links" aria-label="Main Navigation">
           <Link href="#about" className="nav-link">About</Link>
           <Link href="#services" className="nav-link">Services</Link>
           <Link href="#testimonials" className="nav-link">Testimonials</Link>
@@ -30,10 +31,13 @@ export default function Home() {
             <p className="call-direct">📞 Call Tommy directly — 870-715-9007</p>
           </div>
           <div style={{ flex: '1 1 500px', textAlign: 'center' }}>
-            <img 
+            <Image 
               src="https://res.cloudinary.com/dr50ioh9h/image/upload/v1784923162/image_vle5mn.png" 
               alt="Book Cover or Financial Resource" 
-              style={{ maxWidth: '100%', borderRadius: '8px', boxShadow: '0 20px 40px rgba(0,0,0,0.5)', animation: 'levitate 6s ease-in-out infinite' }} 
+              width={500}
+              height={500}
+              priority
+              style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 20px 40px rgba(0,0,0,0.5)', animation: 'levitate 6s ease-in-out infinite' }} 
             />
           </div>
         </div>
@@ -84,11 +88,13 @@ export default function Home() {
             </blockquote>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <img 
+            <Image 
               src="https://res.cloudinary.com/dr50ioh9h/image/upload/v1784923162/8_tommy_zakp3j.png" 
               alt="Tommy L. Ruff" 
+              width={500}
+              height={500}
               className="authority-frame"
-              style={{ width: '100%', maxWidth: '500px', margin: '0 auto', display: 'block' }} 
+              style={{ width: '100%', height: 'auto', maxWidth: '500px', margin: '0 auto', display: 'block' }} 
             />
             <div style={{ background: '#fff', padding: '2rem', borderRadius: '8px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', textAlign: 'center' }}>
               <h3 style={{ marginBottom: '1rem', color: 'var(--primary)' }}>Learn How to Create Tax-Free Retirement Income</h3>
