@@ -59,7 +59,7 @@ export default function PortfolioPage() {
                  <Tooltip 
                    contentStyle={{ backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                    itemStyle={{ fontWeight: 600 }}
-                   formatter={(value: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value)}
+                   formatter={(value: any) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(Number(value) || 0)}
                  />
                  <Area type="monotone" dataKey="premium" name="Paid Premiums" stroke="#94a3b8" fillOpacity={1} fill="url(#colorPremium)" strokeDasharray="5 5" />
                  <Area type="monotone" dataKey="cashValue" name="Cash Value" stroke="#059669" strokeWidth={3} fillOpacity={1} fill="url(#colorCashValue)" />
