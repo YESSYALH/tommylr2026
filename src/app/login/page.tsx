@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase/client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -13,19 +14,41 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/dashboard");
+    }
+  }, [user, router]);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
     try {
+      if (process.env.NEXT_PUBLIC_FIREBASE_API_KEY?.includes('mock')) {
+        const allowedEmails = ['krakendigitalabs@gmail.com', 'tommylruff@gmail.com'];
+        if (allowedEmails.includes(email.toLowerCase()) && password === '123456') {
+          localStorage.setItem('mock_user_email', email.toLowerCase());
+          window.location.href = "/dashboard"; // hard redirect para montar el AuthContext con localStorage
+          return;
+        } else {
+          setError("Credenciales incorrectas (Demo). Acceso denegado.");
+          setLoading(false);
+          return;
+        }
+      }
       await signInWithEmailAndPassword(auth, email, password);
       router.push("/dashboard");
     } catch (err: unknown) {
       setError("Failed to sign in. Please check your credentials.");
       console.error(err);
     } finally {
-      setLoading(false);
+      if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY?.includes('mock')) {
+        setLoading(false);
+      }
     }
   };
 
