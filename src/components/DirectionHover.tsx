@@ -1,0 +1,107 @@
+"use client";
+
+import { useRef, useState } from "react";
+
+const EASE_MAP: Record<string, string> = {
+    linear: "linear",
+    easeIn: "ease-in",
+    easeOut: "ease-out",
+    easeInOut: "ease-in-out",
+};
+
+function transitionToCss(t: any): string {
+    const duration = (t && t.duration) || 0.4;
+    let ease = "cubic-bezier(0.22, 1, 0.36, 1)";
+    if (t && t.ease) {
+        if (Array.isArray(t.ease)) ease = `cubic-bezier(${t.ease.join(", ")})`;
+        else if (EASE_MAP[t.ease]) ease = EASE_MAP[t.ease];
+    } else if (t && t.type === "spring") {
+        ease = "cubic-bezier(0.34, 1.56, 0.64, 1)";
+    }
+    return `transform ${duration}s ${ease}`;
+}
+
+const COMPONENT_DEFAULTS = {
+    title: "DIRECTION HOVER",
+    font: {
+        fontSize: "inherit",
+        fontFamily: "inherit",
+    },
+    gap: 20,
+    textColor: "inherit",
+    hoverColor: "var(--secondary)",
+    transition: {
+        type: "tween",
+        duration: 0.3,
+        delay: 0,
+        ease: "easeInOut",
+    },
+};
+
+export default function DirectionHover(props: any) {
+    props = { ...COMPONENT_DEFAULTS, ...props };
+    const { title, font, gap, textColor, hoverColor, transition, style } = props;
+
+    const ref = useRef<HTMLSpanElement>(null);
+    const [dir, setDir] = useState<"none" | "top" | "bottom">("none");
+
+    const onEnter = (e: React.MouseEvent) => {
+        const el = ref.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const y = e.clientY - rect.top;
+        setDir(y < rect.height / 2 ? "top" : "bottom");
+    };
+    const onLeave = () => setDir("none");
+
+    const fontObj = font || {};
+    
+    // We use em units to inherit the parent's font size automatically!
+    const lineBoxEm = 1.2; 
+    const gapEm = gap / 100; // e.g. gap=20 -> 0.2em
+    const stepEm = lineBoxEm + gapEm;
+
+    const yByDir = { none: -stepEm, top: 0, bottom: -2 * stepEm };
+
+    const labelStyle: React.CSSProperties = {
+        ...fontObj,
+        margin: 0,
+        whiteSpace: "pre",
+        lineHeight: 1,
+        height: `${lineBoxEm}em`,
+        display: "flex",
+        alignItems: "center",
+        overflow: "hidden",
+    };
+
+    return (
+        <span
+            ref={ref}
+            onMouseEnter={onEnter}
+            onMouseLeave={onLeave}
+            style={{
+                ...style,
+                position: "relative",
+                display: "inline-block",
+                overflow: "hidden",
+                height: `${lineBoxEm}em`,
+                cursor: "pointer",
+                userSelect: "none",
+            }}
+        >
+            <span
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: `${gapEm}em`,
+                    transform: `translateY(${yByDir[dir]}em)`,
+                    transition: transitionToCss(transition),
+                }}
+            >
+                <span style={{ ...labelStyle, color: hoverColor }}>{title}</span>
+                <span style={{ ...labelStyle, color: textColor }}>{title}</span>
+                <span style={{ ...labelStyle, color: hoverColor }}>{title}</span>
+            </span>
+        </span>
+    );
+}
