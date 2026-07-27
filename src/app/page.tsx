@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import DirectionHover from "@/components/DirectionHover";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
       </header>
 
       <section className="hero" style={{ textAlign: 'left' }}>
-        <div className="container" style={{ display: 'flex', gap: '4rem', alignItems: 'center', flexWrap: 'wrap' }}>
+        <div className="container" style={{ display: 'flex', gap: '4rem', alignItems: 'center', flexWrap: 'wrap', position: 'relative', zIndex: 10 }}>
           <div style={{ flex: '1 1 500px' }}>
             <h1 style={{ margin: '0 0 1.5rem 0' }}>Creating Wealth and Keeping It in the Family</h1>
             <p style={{ margin: '0 0 2.5rem 0' }}>
@@ -37,7 +38,7 @@ export default function Home() {
               width={500}
               height={500}
               priority
-              style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 20px 40px rgba(0,0,0,0.5)', animation: 'levitate 6s ease-in-out infinite' }} 
+              style={{ width: '100%', maxWidth: '500px', height: 'auto', borderRadius: '8px', boxShadow: '0 20px 40px rgba(0,0,0,0.5)', animation: 'levitate 6s ease-in-out infinite' }} 
             />
           </div>
         </div>
@@ -75,7 +76,7 @@ export default function Home() {
       <section id="about" className="section bg-light">
         <div className="two-col">
           <div>
-            <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>About Tommy</h2>
+            <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '1.5rem' }}><DirectionHover title="About Tommy" textColor="var(--primary)" hoverColor="var(--secondary)" /></h2>
             <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '1.5rem' }}>
               Tommy Ruff began his career in 1984. After decades on the front lines of financial services, he discovered a harder truth: the conventional system was built to benefit Wall Street and Washington — not families.
             </p>
@@ -94,7 +95,7 @@ export default function Home() {
               width={500}
               height={500}
               className="authority-frame"
-              style={{ width: '100%', height: 'auto', maxWidth: '500px', margin: '0 auto', display: 'block' }} 
+              style={{ width: 'auto', height: 'auto', maxWidth: '100%', margin: '0 auto', display: 'block' }} 
             />
             <div style={{ background: '#fff', padding: '2rem', borderRadius: '8px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', textAlign: 'center' }}>
               <h3 style={{ marginBottom: '1rem', color: 'var(--primary)' }}>Learn How to Create Tax-Free Retirement Income</h3>
@@ -107,7 +108,7 @@ export default function Home() {
 
       <section id="services" className="section">
         <div className="container">
-          <h2 className="section-title">Practice Areas</h2>
+          <h2 className="section-title"><DirectionHover title="Practice Areas" textColor="var(--primary)" hoverColor="var(--secondary)" /></h2>
           <p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem', fontSize: '1.1rem', color: '#666' }}>
             Financial Strategies Built on Certainty, Not Guesses. Every strategy Tommy recommends is grounded in guarantees. Your family deserves a plan that works regardless of what markets, Washington, or inflation do next.
           </p>
@@ -164,7 +165,7 @@ export default function Home() {
 
       <section id="testimonials" className="section">
         <div className="container">
-          <h2 className="section-title">Client Stories</h2>
+          <h2 className="section-title"><DirectionHover title="Client Stories" textColor="var(--primary)" hoverColor="var(--secondary)" /></h2>
           <div className="grid-3">
             <div className="testimonial-card">
               <div className="stars">★★★★★</div>
