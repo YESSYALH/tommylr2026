@@ -21,9 +21,9 @@ const COMPONENT_DEFAULTS = {
     lineColor: "rgba(13, 30, 70, 0.35)", // Dark Blue lines
     trailColor: "rgba(13, 30, 70, 0.8)", // Dark Blue trail
     trail: true,
-    spacing: 50,
-    radius: 400,
-    strength: 5,
+    spacing: 60,
+    radius: 350,
+    strength: 2.5,
 };
 
 export default function KineticGrid(props: KineticGridProps) {
@@ -105,9 +105,9 @@ export default function KineticGrid(props: KineticGridProps) {
 
         const drawStatic = () => {
             ctx.clearRect(0, 0, W, H);
-            ctx.globalAlpha = 0.14;
+            ctx.globalAlpha = 0.08;
             ctx.strokeStyle = lineColor;
-            ctx.lineWidth = 0.75;
+            ctx.lineWidth = 0.5;
             for (let c = 0; c < cols.length; c++) {
                 for (let rIdx = 0; rIdx < cols[c].length; rIdx++) {
                     const d = cols[c][rIdx];
@@ -224,18 +224,18 @@ export default function KineticGrid(props: KineticGridProps) {
                           )
                         : 0;
                     if (right) {
-                        ctx.globalAlpha = 0.15 + prox * 0.6;
+                        ctx.globalAlpha = 0.08 + prox * 0.4;
                         ctx.strokeStyle = lineColor;
-                        ctx.lineWidth = 1.0 + prox * 2.0;
+                        ctx.lineWidth = 0.5 + prox * 1.0;
                         ctx.beginPath();
                         ctx.moveTo(d.x, d.y);
                         ctx.lineTo(right.x, right.y);
                         ctx.stroke();
                     }
                     if (down) {
-                        ctx.globalAlpha = 0.15 + prox * 0.6;
+                        ctx.globalAlpha = 0.08 + prox * 0.4;
                         ctx.strokeStyle = lineColor;
-                        ctx.lineWidth = 1.0 + prox * 2.0;
+                        ctx.lineWidth = 0.5 + prox * 1.0;
                         ctx.beginPath();
                         ctx.moveTo(d.x, d.y);
                         ctx.lineTo(down.x, down.y);
@@ -251,10 +251,10 @@ export default function KineticGrid(props: KineticGridProps) {
                           1 - Math.sqrt((m.x - d.x) ** 2 + (m.y - d.y) ** 2) / R
                       )
                     : 0;
-                ctx.globalAlpha = 0.4 + prox * 0.6;
+                ctx.globalAlpha = 0.2 + prox * 0.4;
                 ctx.fillStyle = dotColor;
                 ctx.beginPath();
-                ctx.arc(d.x, d.y, 1.2 + prox * 2.5, 0, 2 * Math.PI);
+                ctx.arc(d.x, d.y, 1.0 + prox * 1.5, 0, 2 * Math.PI);
                 ctx.fill();
             }
 
@@ -267,10 +267,10 @@ export default function KineticGrid(props: KineticGridProps) {
                     const a = tr[i - 1];
                     const b = tr[i];
                     const age = now - b.t;
-                    if (age > 260) continue;
-                    ctx.globalAlpha = Math.max(0, 1 - age / 260) * 0.8;
+                    if (age > 180) continue;
+                    ctx.globalAlpha = Math.max(0, 1 - age / 180) * 0.5;
                     ctx.strokeStyle = trailColor;
-                    ctx.lineWidth = 2.5;
+                    ctx.lineWidth = 1.5;
                     ctx.beginPath();
                     ctx.moveTo(a.x, a.y);
                     ctx.lineTo(b.x, b.y);
