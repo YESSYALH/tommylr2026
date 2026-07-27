@@ -63,7 +63,8 @@ Una vez el MVP esté en manos de los primeros usuarios, añadiremos los "Atracti
 - [ ] **Legacy Vault (Bóveda Digital)**: Almacenamiento seguro en la nube para contratos de fideicomisos, pólizas y designación de beneficiarios.
 - [ ] **Liquidity Forecaster**: Proyecciones a 10/20/30 años de crecimiento compuesto libre de impuestos.
 
-### 🚀 POST-MVP: Fase 4 (Monetización)
+### 🚀 POST-MVP: Fase 4 (Motor Insurtech y Monetización)
+- [ ] **Integración de Ecosistema iPipeline**: Conexión a *LifePipe* para cotizaciones en vivo y *iGO Evolve* para e-Apps (Requiere GAID activo de Tommy).
 - [ ] Integración de Stripe (Planes Freemium y Premium).
 - [ ] Paywalls para restringir el acceso al Legacy Vault y a los AI Insights.
 - [ ] Expansión a PWA (App instalable en iOS y Android).

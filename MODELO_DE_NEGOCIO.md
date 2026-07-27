@@ -57,3 +57,9 @@ El desarrollo y la visión de **Secure Wealth** nacen de una poderosa alianza es
 - **Kraken Digital Labs (Medellín, Colombia)**: Fundada y dirigida por el sobrino **Yessy Alejandro**, aportando el brazo de ingeniería de software de élite, innovación tecnológica, Inteligencia Artificial y diseño de interfaces premium (Vanguard UI). 
 
 Esta sinergia (Tío y Sobrino) combina la **sabiduría financiera de Arkansas** con la **vanguardia tecnológica de Medellín**, creando una ventaja competitiva única e inigualable en el mercado FinTech.
+
+## 8. El Flujo Participativo de Intermediación (Insurtech)
+Más allá del SaaS, el modelo de negocio incorpora una vía de altísima rentabilidad al actuar como agencia digital (BGA) conectada a iPipeline:
+- **Captura Tecnológica**: El frontend de la plataforma capta al prospecto a través de calculadoras interactivas.
+- **Validación Automática**: APIs como *iGO Evolve* limpian el proceso operativo, garantizando 0% de rechazos por errores de captura.
+- **Cobro de Comisión Estructural**: Al inyectar el GAID de Tommy Ruff directamente en la API de iPipeline, cada póliza emitida por grandes mutuales (ej. MassMutual) garantiza el pago de altas comisiones a la agencia, requiriendo intervención humana solo en el 10% del proceso final.
