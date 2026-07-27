@@ -44,6 +44,9 @@ export default function Home() {
           <Link href="#testimonials" style={{ textDecoration: 'none', color: '#64748b', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', transition: 'color 0.3s' }}>
             Testimonials
           </Link>
+          <Link href="/quote" style={{ textDecoration: 'none', color: '#059669', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', transition: 'color 0.3s' }}>
+            Quote Demo
+          </Link>
           
           <Link href="/login" style={{
             background: '#0f172a',
@@ -274,7 +277,14 @@ export default function Home() {
             </div>
           </div>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link href="#ebook" className="btn-primary">Download the Free Ebook →</Link>
+            <div className="flex items-center gap-6 justify-center">
+              <Link href="/quote" className="text-slate-600 font-bold hover:text-emerald-600 transition-colors hidden sm:block">
+                Simulador iPipeline
+              </Link>
+              <Link href="/login" className="bg-slate-900 text-white px-6 py-2.5 rounded-full font-bold hover:bg-emerald-600 hover:text-white transition-all shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(5,150,105,0.4)]">
+                Client Login
+              </Link>
+            </div>
           </div>
         </div>
       </section>
