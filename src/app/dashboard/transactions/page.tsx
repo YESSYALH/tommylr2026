@@ -117,7 +117,7 @@ export default function TransactionsPage() {
                       </td>
                       <td className="px-6 py-4 text-center">
                         <button 
-                          onClick={() => handleDelete(t.id)}
+                          onClick={() => t.id && handleDelete(t.id)}
                           className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
                           title="Delete Record"
                         >
